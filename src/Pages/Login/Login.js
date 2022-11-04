@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import img from '../../assets/images/login/login.svg';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 
 const Login = () => {
 
@@ -29,7 +30,7 @@ const Login = () => {
                 console.log(currentUser);
 
                 // get jwt token
-                fetch('http://localhost:5000/jwt', {
+                fetch('https://genius-car-server-neon.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -43,7 +44,7 @@ const Login = () => {
                         localStorage.setItem('genius-token', data.token);
                         navigate(from, { replace: true });
                     });
-                
+
             })
             .catch(error => console.log(error));
     }
